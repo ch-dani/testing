@@ -16,14 +16,8 @@
                         <th class="text-right">Actions</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>4</td>
-                        <td>adnan</td>
-                        <td>aaa@aa.net</td>
-                        <td class="text-right">noactions</td>
-
-                    </tr>
+                <tbody id="show_users">
+                   
                 </tbody>
 
             </table>
@@ -33,22 +27,19 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $("document").ready(function(){
-        alert("dne");
         fetch_users();
-        
-
         function fetch_users(){
-         
-            
             $.ajax({
                 type:'post',
                 url: '{{route('fetch_users')}}',
                 data: {
                 "_token": "{{ csrf_token() }}",
-                
                 },
                 success:function(response){
-                    alert(response);
+                    
+                    $("#show_users").html(response);
+                   
+
                 },
 
 

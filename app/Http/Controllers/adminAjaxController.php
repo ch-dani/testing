@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\Category;
 
 use Illuminate\Http\Request;
 
@@ -15,7 +16,21 @@ class adminAjaxController extends Controller
     public function index()
     {
         $users=User::get();
-        return($users);
+        $output='';
+        $i=1;
+        foreach($users as $user){
+            $output .='<tr><td>'. $i++ .'</td><td>'.$user->name.'</td><td>'.$user->email.'</td><td class="text-right"><a href="javascript:void(0)" id="edituserbtn" value="'.$user->id.'" class="fa fa-edit p-2"></a><a value="'.$user->id.'" id="deluserbtn" class="fa fa-trash" href="javascript:void(0)"></a></td></tr>';
+        }
+        return($output);
+    }
+    public function fetch_categories(){
+        $categories= Category::get();
+        $output='';
+        $i=1;
+        foreach($categories as $category){
+            $output .='<tr><td>'. $i++ .'</td><td>'.$category->title.'</td><td class="text-right"><a href="javascript:void(0)" id="edituserbtn" value="'.$category->id.'" class="fa fa-edit p-2"></a><a value="'.$category->id.'" id="deluserbtn" class="fa fa-trash" href="javascript:void(0)"></a></td></tr>';
+        }
+        return($output);
     }
 
     /**

@@ -14,15 +14,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'website.Welcome')->name('landingpage');
+
+
 Route::prefix('user')->group(function(){
     Route::view('login','website.login')->name('getLoginForm');
     Route::view('register','website.register')->name('getRegisterForm');
 });
 
+
+
 Route::prefix('admin')->group(function(){
     Route::view('dashboard','admin.index')->name('admin.dashboard');
     Route::view('users','admin.users')->name('admin.users');
+    Route::view('categories','admin.categories')->name('admin.categories');
+
+    // Ajax Post Requests
     Route::post('users/show','adminAjaxController@index')->name('fetch_users');
+    Route::post('categories/show','adminAjaxController@fetch_categories')->name('fetch_categories');
 });
 
 
