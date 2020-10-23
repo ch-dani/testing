@@ -8,7 +8,7 @@
               <li class="sidebar-list-item"><a href="{{route('admin.dashboard')}}" class="sidebar-link text-muted active"><i class="o-home-1 mr-3 text-gray"></i><span>Home</span></a></li>
               <li class="sidebar-list-item"><a href="{{route('admin.users')}}" class="sidebar-link text-muted"><i class="o-sales-up-1 mr-3 text-gray"></i><span>Users</span></a></li>
               <li class="sidebar-list-item"><a href="{{route('admin.categories')}}" class="sidebar-link text-muted"><i class="o-table-content-1 mr-3 text-gray"></i><span>Categories</span></a></li>
-              <li class="sidebar-list-item"><a href="forms.html" class="sidebar-link text-muted"><i class="o-survey-1 mr-3 text-gray"></i><span>Products</span></a></li>
+              <li class="sidebar-list-item"><a href="{{route('admin.products')}}" class="sidebar-link text-muted"><i class="o-survey-1 mr-3 text-gray"></i><span>Products</span></a></li>
           <li class="sidebar-list-item"><a href="#" data-toggle="collapse" data-target="#pages" aria-expanded="false" aria-controls="pages" class="sidebar-link text-muted"><i class="o-wireframe-1 mr-3 text-gray"></i><span>Manage Pages</span></a>
             <div id="pages" class="collapse">
               <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">

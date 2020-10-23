@@ -27,10 +27,12 @@ Route::prefix('admin')->group(function(){
     Route::view('dashboard','admin.index')->name('admin.dashboard');
     Route::view('users','admin.users')->name('admin.users');
     Route::view('categories','admin.categories')->name('admin.categories');
+    Route::view('products','admin.products')->name('admin.products');
 
     // Ajax Post Requests
     Route::post('users/show','adminAjaxController@index')->name('fetch_users');
     Route::post('categories/show','adminAjaxController@fetch_categories')->name('fetch_categories');
+    Route::post('products/show','adminAjaxController@fetch_products')->name('fetch_products');
 });
 
 
