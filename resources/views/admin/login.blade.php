@@ -1,9 +1,13 @@
+@if(Auth::guard('admin')->check())
+  {{ Redirect::route('admin.dashboard')}}
+@endif
+
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Login</title>
+    <title>Admin Login</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -33,12 +37,20 @@
             <div class="pr-lg-5"><img src="{{asset('adminAssets/img/illustration.svg')}}" alt="" class="img-fluid"></div>
           </div>
           <div class="col-lg-5 px-lg-4">
-            <h1 class="text-base text-primary text-uppercase mb-4">Login</h1>
+            <h1 class="text-base text-primary text-uppercase mb-4">Admin Login</h1>
             <h2 class="mb-4">Welcome back!</h2>
             <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-            <form id="loginForm" action="{{route('user.login')}}" method="post" class="mt-4">
-            @csrf
+           
+            @if(Session::has('invalid'))
+            <div class="alert alert-danger">
+             {{ Session::get('invalid') }}
+             </div>
+             @endif
+
+
+             <form id="loginForm" action="{{route('admin.Login')}}" method="POST" class="mt-4">
               <div class="form-group mb-4">
+              @csrf
                 <input type="text" name="email" placeholder="Username or Email address" class="form-control border-0 shadow form-control-lg">
               </div>
               <div class="form-group mb-4">

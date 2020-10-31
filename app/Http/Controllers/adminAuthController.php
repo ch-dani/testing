@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 
-class UserAuthController extends Controller
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Session;
+class adminAuthController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,15 +14,25 @@ class UserAuthController extends Controller
      */
     public function login(Request $request)
     {
-        $credentials = $request->only(['email','password']);
-        // dd($credentials);
-        if($user=Auth::guard()->attempt($credentials)){
+        
+        
+        $credentials= $request->only('email','password');
+        if (Auth::guard('admin')->attempt([
+            'email' => $request->email,
+            'password' => $request->password,
+            'role' => '0'
+
+        ])) {
+            return redirect()->route('admin.dashboard');
             
-            return redirect()->route('landingpage');
         }else{
-            return back()->withInput();
+            // Session()->flash('error', 'Invalid Credentials');
+            // return redirect()->back()->with('error','invalid credentials'); 
+            
+            return back()->with('invalid', 'Incorrect Email or password');
             
         }
+       
     }
 
     /**

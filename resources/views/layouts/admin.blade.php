@@ -21,7 +21,13 @@
     <link rel="stylesheet" href="{{asset('/adminAssets/css/custom.css')}}">
     <!-- Favicon-->
     <link rel="shortcut icon" href="{{asset('/adminAssets/img/favicon.png?3')}}">
-    
+    <style>
+      .lgoutbtn{
+        background:none;
+        border:none;
+
+      }
+    </style>
   </head>
   <body>
     <!-- navbar-->
@@ -68,7 +74,7 @@
           <li class="nav-item dropdown ml-auto"><a id="userInfo" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><img src="{{asset('adminAssets/img/avatar-6.jpg')}}" alt="Jason Doe" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
             <div aria-labelledby="userInfo" class="dropdown-menu"><a href="#" class="dropdown-item"><strong class="d-block text-uppercase headings-font-family">Mark Stephen</strong><small>Web Developer</small></a>
               <div class="dropdown-divider"></div><a href="#" class="dropdown-item">Settings</a><a href="#" class="dropdown-item">Activity log       </a>
-              <div class="dropdown-divider"></div><a href="login.html" class="dropdown-item">Logout</a>
+              <div class="dropdown-divider"></div><a href="javascript:void(0)" class="dropdown-item"><form action="{{route('admin.logout')}}" method="POST">@csrf<input class="lgoutbtn" type="submit" value="logout"></form></a>
             </div>
           </li>
         </ul>
