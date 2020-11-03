@@ -10,6 +10,6 @@ class Product extends Model
     protected $fillable=['cat_id','title','price','description',];
 
     public function to_cat(){
-        $this->belongsTo('App\Category','cat_id');
+       return  $this->belongsTo('App\Category','id');
     }
 }

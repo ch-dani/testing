@@ -36,15 +36,20 @@ class adminAjaxController extends Controller
     public function fetch_products(){
         // $category = Product::find(1)->to_cat();
         // return($category);
-
+        // return("done");
 
         $products=Product::get();
+        $products=Product::find(1)->to_cat()->get();
         $output='';
         $i=1;
+        dd($products->title);
         foreach($products as $product){
+            dd($product);
             $output .='<tr><td>'. $i++ .'</td><td>'.$product->title.'</td><td>'.$product->price.'</td></td><td>'.$product->id.'</td><td class="text-right"><a href="javascript:void(0)" id="edituserbtn" value="'.$product->id.'" class="fa fa-edit p-2"></a><a value="'.$product->id.'" id="deluserbtn" class="fa fa-trash" href="javascript:void(0)"></a></td></tr>';
         }
         return($output);
+       
+        
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use App\Product;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,6 +10,6 @@ class Category extends Model
         protected $fillable=['title'];
 
         public function product(){
-            $this->hasMany('App\Product');
+            return $this->hasMany('Product','cat_id');
         }
 }

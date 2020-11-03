@@ -15,12 +15,16 @@ class UserAuthController extends Controller
     {
         $credentials = $request->only(['email','password']);
         // dd($credentials);
-        if($user=Auth::guard()->attempt($credentials)){
-            
+        if($user=Auth::guard()->attempt([
+          'email'=>$request->email,
+          'password'=>$request->password,
+          'role'=>1
+          ])){
+
             return redirect()->route('landingpage');
         }else{
             return back()->withInput();
-            
+
         }
     }
 

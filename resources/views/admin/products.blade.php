@@ -39,7 +39,7 @@
                 url:"{{route('fetch_products')}}",
                 data:{"_token":"{{csrf_token()}}"},
                 success:function(response){
-                    console.log(response);
+                    console.log(typeof(response));
                     $("#show_products").html(response);
                 },
                 error: function (jqXhr, textStatus, errorMessage) { // error callback 
